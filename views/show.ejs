@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,17 +6,13 @@
     <title>Document</title>
 </head>
 <body>
-    
+   <%  for(let item of SearchC){ %>
+    <h1>   <%= item.id %></h1>
+    <h2>   <%= item.userName %></h2>
+    <h4>   <%= item.comment %></h4>
 
-   <% for(let i of arr){ %>
 
-    <h2>    ID  <%=i.id %></h2>
 
-    <h3>   UserName<%= i.userName %></h3>
-    <p>   Comment <%= i.comment %></p>
-    <a  href="/blog/<%=i.id %>"> show</a>
-
-  <%  } %>
-
+  <%  }%>
 </body>
 </html>

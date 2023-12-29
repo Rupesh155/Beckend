@@ -58,6 +58,23 @@ app.post('/blog',(req,res)=>{
   res.redirect('/blog')
 })
 
+app.get('/blog/:id',(req,res)=>{
+
+  console.log(req.params,"rrrr")
+
+  let {id}=req.params
+
+   let SearchC=   arr.filter((key)=>{
+        return key.id==id
+      })
+      console.log(SearchC)
+
+
+
+  // res.send('idddd')
+  res.render('show',{SearchC})
+})
+
 let port = 3000
 app.listen(port, () => {
   console.log(`server running on port  ${port}`)
