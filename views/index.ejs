@@ -18,9 +18,9 @@
     <p>   Comment <%= i.comment %></p>
     <a  href="/blog/<%=i.id %>"> show</a>
     <a href="/blog/<%=i.id %>/edit"> edit</a>
-
-    
-
+    <form action="/blog/<%=i.id%>?_method=DELETE" method="POST">
+      <button> delet</button>
+    </form> 
   <%  } %>
 
 </body>

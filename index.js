@@ -94,27 +94,25 @@ app.get('/blog/:id/edit',(req,res)=>{
 
    app.patch('/blog/:id',(req,res)=>{
     console.log(req.body," data aa gyaaa")
-
-
     let {id}=req.params
-
-
    let editedData=    arr.find((k)=>{
         return k.id==id
-
        })
-
-    
-
        console.log(editedData,"ee")
-
-
        let {comment}=req.body
-
-
-
        editedData.comment=comment
         res.redirect('/blog')
+
+   })
+
+   app.delete('/blog/:id',(req,res)=>{
+    let {id}=req.params
+     let newArr=  arr.filter((d)=>{
+        return d.id!=id
+       })
+       arr=newArr
+       res.redirect('/blog')
+    // res.send('delet ho gyaaaaa ')
 
    })
 
