@@ -4,8 +4,12 @@ let app = express()
 var methodOverride = require('method-override')
 app.use(methodOverride('_method'))
 app.use(express.urlencoded({ extended: true }));
-
+app.use('/cat' , express.static('public')); 
 app.set('view engine', 'ejs')
+
+
+
+let Todos = ["go to gym", "buy conflakes", "eat less"]; 
 let arr = [
   {
     id: 0,
@@ -118,6 +122,13 @@ app.get('/blog/:id/edit',(req,res)=>{
 
 
 
+   app.get('/todos',(req,res)=>{
+
+    res.json(Todos); 
+  
+
+
+   })
 
 let port = 3000
 app.listen(port, () => {
