@@ -1,17 +1,13 @@
 let express=    require('express')
 let app=  express()
 let todo=[1,2,3,4,5,56,'hello']
-app.set('view engine', 'ejs')
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json())
 app.use( '/cat',express.static('public'))
 app.get('/',(req,res)=>{
     res.send('hello')
 })
-
-
-
-
 app.get('/todo', (req,res)=>{
       if(req.xhr){
         res.json(todo)
