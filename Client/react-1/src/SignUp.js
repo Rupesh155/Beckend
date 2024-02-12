@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import './SignUp.css'
-
+import axois  from 'axios'
 const Signup = () => {
   const [formData, setFormData] = useState({
     firstName: '',
@@ -18,21 +18,12 @@ const Signup = () => {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    fetch('http://localhost:4000/signup',{
-      method:'POST',
-         headers: {
-        'Content-Type': 'application/json',
-      },
-
-      body:JSON.stringify(formData)
-    })
-
-    // Perform signup logic, e.g., send data to the server
-    // You can use fetch or any state management library for this
-
+  const handleSubmit =  async(e) => {
+         e.preventDefault();
+    
+         let res=  await  axois.post('http://localhost:4000/signup',formData)
+       console.log(res.data);
+   
     // Example fetch request
     // fetch('http://localhost:4000/signup', {
     //   method: 'POST',
@@ -49,12 +40,12 @@ const Signup = () => {
     //   .catch((error) => {
     //     console.error('Error during signup:', error);
     //   });
-  };
+  }
 
   return (
    
       <div className="signup-card">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} >
         <label>
           First Name:
           <input
@@ -89,13 +80,13 @@ const Signup = () => {
          passWord:
           <input
             type="password"
-            name="password"
-            value={formData.password}
+            name="passWord"
+            value={formData.passWord}
             onChange={handleChange}
           />
         </label>
         <br />
-        <button type="submit">Sign Up</button>
+        <button   type="submit">Sign Up</button>
       </form>
     </div>
   );
